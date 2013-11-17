@@ -64,6 +64,8 @@ Reference on Vapnik-Chervonenkis(VC) dimension:
 * <http://en.wikipedia.org/wiki/VC_dimension>
 
 ## 2.3 Probably Approximately Correct (PAC) Learning
+### Definition
+
 **Probably Approximately Correct (PAC) Learning** provide us a method to caculate how many examples(training data) do we need if we use **tightest hypothesis**. 
 
 The confidence probability $1-\delta$ is the factor of our certainty on the conculsion : error probability at most $\epsilon$
@@ -74,17 +76,44 @@ The confidence probability $1-\delta$ is the factor of our certainty on the conc
 
 > where $\mathcal{C} \Delta h$ is the region of difference between $\mathcal{C}$ and hypothesis $h$.
 
-**Derivation Process:**
+### Explanation:
 
-The follow inequation are same :
+We know that $h$ is the tightest hypothsis which is just a boundary around the known(or selected) positive points. 
+And all points(examples) are drawn from an unknown but fixed probability distribution. 
+We can't make sure that $\mathcal{C} \Delta h$ is less that $\epsilon$.Instead, we give it a lower limit probability : $1 - \delta$. 
+This is why the name of this learning is :Probably Approximately Correct
+
+* Approximately means : we use a (tightest) hypothesis to approximate the absolutely correct class: C
+* Probably means : we can't make sure of that. We can only give a lower limit probability : $1 - \delta$
+
+### Derivation:
+$\mathcal{C} \Delta h < \epsilon$ can be derived from each strip is $ < \epsilon/4$. 
+
+Then we know that $h$ is totally determined by points(examples). 
+
+> **Sub-conclusion:**
+> Making degree of strip is T, the event:
+
+> $T \geq \epsilon/4$ == no point(example) is in the region of $\epsilon/4$ == all points fallen in the region out of $\epsilon/4$
+
+> **Prove:**
+> Assuming that degree of strip $T \geq \epsilon/4$ and there is a point fallen into this region, the tightest hypothessis will contain this point. Then T should smaller than $\epsilon/4$. It conflict with our assume. Approved
+
+Then we can get 
 $$
-	P\\{\mathcal{C} \Delta h \le \epsilon \\} > 1 - \delta \Leftrightarrow  1 - P\\{\mathcal{C} \Delta h \le \epsilon \\} < \delta
+	N \geq \frac{4}{\epsilon}ln{\frac{4}{\delta}}
 $$
 
-and
- 
-$$
-	P\\{\mathcal{C} \Delta h \le \epsilon \\} = 1 - 4(1 - \frac{\epsilon}{4})^N$
-$$
+###Problems:
+**Q:** On page $P69$ of Chapter 2, the author gives an example about how to calculate the number of samples needed to satisfy the miss value $\delta$. The author uses upper bound $\epsilon / 4$ to measure the error, note in here $\epsilon / 4$ is the upper bound for one strip. Then the actually error, noted as $\alpha$, then $\alpha \le \epsilon$. Why not calculated by $(1 - \alpha)^N$ instead of $(1 - \epsilon / 4)^N$?
 
-* 
+**A:** I think they could be fine. But method is this book are more strict. Because if $\alpha > 0, x > 0 $, $\alpha(1 - \frac{x}{\alpha})^n > (1-x)^n$
+
+So if $4(1-\epsilon/4)^n \leq \delta$ then $(1-\epsilon)^n \leq \delta$
+
+### Conclusion:
+> I think the pac gives a us way to quantify the value of proximity between the underlying distribution and our hypothesis under a number of samples.
+
+I don't think so. PAC tell us if we want to adopt tightest hypothesiss with confidence probability at least $1 − \delta$, a given point will be misclassified with error probability at most $\epsilon$ 
+
+
