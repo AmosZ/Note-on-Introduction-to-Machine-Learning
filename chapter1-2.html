@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Chapter1-2</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/theme/css/main.css" type="text/css" />
+            
+    <script type= "text/javascript">
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.src = 'https:' == document.location.protocol ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js' : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'; 
+        s[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" + 
+            "    config: ['MMLorHTML.js']," + 
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS','output/NativeMML']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," + 
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax .mo, .MathJax .mi': {color: 'black ! important'}} " +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(s);
+    </script>
+
+
+        <link href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/" type="application/atom+xml" rel="alternate" title="Note on IML ATOM Feed" />
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/css/ie.css"/>
+                <script src="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning">Note on IML </a></h1>
+                <nav><ul>
+		    <li><a href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/pages/about.html">About</a></li>
+		    <li><a href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/pages/contact.html">Contact</a></li>
+		    <li class="active"><a href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/category/chapter1-2.html">chapter1-2</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">    
+<article>
+<footer style="float: right" class="post-info">
+        <abbr class="published" title="2013-11-11T00:00:00">
+                Mon 11 November 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/author/amos-zhu-and-enoche-zhou.html">Amos Zhu and Enoche Zhou</a>
+        </address>
+ 
+</footer>        <header> 
+            <h1 class="entry-title"><a href="" rel="bookmark" title="Permalink to Chapter1-2">Chapter1-2</a></h1> 
+        </header>
+        <div class="entry-content">
+        <hr />
+<h1>Chapter1 : Introduction</h1>
+<p><strong>Machine learning</strong> consist of two parts:</p>
+<ul>
+<li>learn from  experience(history data)</li>
+<li>adapt to environments</li>
+</ul>
+<p>In past, I usually confuse <strong>Machine Learning</strong> and <strong>Data Mining</strong>. <em>Data Mining</em> is an application of machine learning methods to large databases. But machine learning is also a part of artificial intelligence. Something is called to be "Intelligent" means it has the abiliy to <strong>learn and adapter to changes</strong>.</p>
+<p>I don't think machine learning is just the execution of a computer program to optimize the parameters of a model. It should also tell us how to select or create the model. <strong>Learning</strong> should not merely optimize the parameters of an known formular(model,hypothesis).</p>
+<h2>Problem:</h2>
+<h3>1. What kind of learning algorithm (Supervised/Unsupervised/Reinforement) do you think is most suitable for pattern formation (e-Mouse is used) task in our lab.? If we change the task to navigation issue?</h3>
+<p>A:I think we should understand what is supervised/unsupervised/reinforemen learning formally at first.(To be added).
+Reinforement is the best choice I think. We don't have any history data to make prediction and the emouse won't get together automatically in the form of letter A. Instead, each emouse should take a sequence steps to form a pattern. It is what reinforement learning does. </p>
+<hr />
+<h1>Chapter2: Supervised Learning</h1>
+<h2>2.1 An example: Label family car automatically.</h2>
+<blockquote>
+<p><strong>Training Data</strong>: a set of examples cars.Each of them has a label.</p>
+</blockquote>
+<p><strong>Input Representation:</strong> Here,we separate a family car from other cars are the <strong>price</strong> and <strong>engine power</strong>. But do we have some general method or idea to represent input? It is very important to know which attributes(or dimension) of data play main role in machine learning.</p>
+<p>Some symbols:</p>
+<ul>
+<li>$\mathcal{H}$: <em>hypothesis class</em>. It is a model with parameters unknow.</li>
+<li>$h$: hypothesis. $h \in \mathcal{H}$. It is a model with known parameters.</li>
+<li>$X$: tranning set.</li>
+<li><strong>Empirical error</strong> : the proportion of training instances where predictions of $h$ do not match the required values $r$ given in $X$
+$$
+    E(h|\mathcal{X}) = \sum_{t=1}^{N}(h(x_t) \neq r_t)
+$$</li>
+</ul>
+<p>We know that there maybe infinite $h \in \mathcal{H}$ whose empirical error is zero(or maybe none, see below). How to select the best one? --The hypothesis with max <strong>margin</strong></p>
+<p>So here is our general steps:</p>
+<ol>
+<li>find the <em>most specific hypothesis</em> S that is the <strong>tightest boundary</strong> that include all the positive example and none of the negative example.</li>
+<li>find the <em>most general hypothesis</em> G that is the <strong>largest boundary</strong> that include all the positive example and none of the negative example. (Do we have some more mathematical definition of specific hypothesis and general hypothesis??)</li>
+<li>find a way to compute <strong>margin</strong></li>
+<li>choose the hypothesis $h$ from  hypothesis class $\mathcal{H}$ with <strong>max margin</strong></li>
+</ol>
+<p>We will know that <strong>SVM(support vector machine)</strong> will produce a hypossis with largest margin. What is the relationship between them? </p>
+<p>In the end of this example. It tell us that we assume there exist $h \in \mathcal{H}$ with $E(h|\mathcal{X})$ is 0.But how we can always choose a hypothesis $\mathcal{X}$ that include this $h$? Just as mentioned above, machine learning should tell us how to create/select/produce a hypothsis class(model with unknown parameters), not merely optimize parameter with a known model.</p>
+<h2>2.2 Vapnik-Chervonenkis(VC) Dimension.</h2>
+<blockquote>
+<p><strong>Shatter</strong> : A classification model $f$ with some parameter vector $\vec{\theta}$ is said to "shatter" a set of data point , if, for all assignments of labels to thoses points, there exists a $\theta$ such that model $f$ make no error when evaluating that set of data points.</p>
+<p>$\mathcal{H}$ : is the hypothesis class.</p>
+</blockquote>
+<p>The maximum number of pointers that can be <strong>shattered</strong> by $\mathcal{H}$(there exist $h \in \mathcal{H}$ can separate $\mathcal{C}$ perfectly(with no empirical error)) is called the <em>Vapnik-Chervonenkis(VC) dimension</em> of $\mathcal{H}$, is denoted as$VC(\mathcal{H})$ and measure the <em>capacity of $\mathcal{H}$</em></p>
+<p><strong>Why Vapnik-Chervonenkis(VC) dimension is useful????</strong></p>
+<p>Reference on Vapnik-Chervonenkis(VC) dimension: </p>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Vapnik%E2%80%93Chervonenkis_theory">http://en.wikipedia.org/wiki/Vapnik%E2%80%93Chervonenkis_theory</a></li>
+<li><a href="http://en.wikipedia.org/wiki/VC_dimension">http://en.wikipedia.org/wiki/VC_dimension</a></li>
+</ul>
+<h2>2.3 Probably Approximately Correct (PAC) Learning</h2>
+<h3>Definition</h3>
+<p><strong>Probably Approximately Correct (PAC) Learning</strong> provide us a method to caculate how many examples(training data) do we need if we use <strong>tightest hypothesis</strong>. </p>
+<p>The confidence probability $1-\delta$ is the factor of our certainty on the conculsion : error probability at most $\epsilon$</p>
+<blockquote>
+<p>In <em>Probably Approximately Correct (PAC) learning</em>, given a class, $\mathcal{C}$, and examples drawn from some unknown but fixed probability distribution, $\mathcal{p(x)}$, we want to find the number of examples, $N$, such that with probability at least $1 - \delta$, the hypothesis $h$ has error at most $\epsilon$, for arbitrary $\delta \le 1/2$ and $\epsilon &gt; 0$</p>
+<p>$$P\{\mathcal{C} \Delta h \le \epsilon \} \ge 1 - \delta$$</p>
+<p>where $\mathcal{C} \Delta h$ is the region of difference between $\mathcal{C}$ and hypothesis $h$.</p>
+</blockquote>
+<h3>Explanation:</h3>
+<p>We know that $h$ is the tightest hypothsis which is just a boundary around the known(or selected) positive points. 
+And all points(examples) are drawn from an unknown but fixed probability distribution. 
+We can't make sure that $\mathcal{C} \Delta h$ is less that $\epsilon$.Instead, we give it a lower limit probability : $1 - \delta$. 
+This is why the name of this learning is :Probably Approximately Correct</p>
+<ul>
+<li>Approximately means : we use a (tightest) hypothesis to approximate the absolutely correct class: C</li>
+<li>Probably means : we can't make sure of that. We can only give a lower limit probability : $1 - \delta$</li>
+</ul>
+<h3>Derivation:</h3>
+<p>$\mathcal{C} \Delta h &lt; \epsilon$ can be derived from each strip is $ &lt; \epsilon/4$. </p>
+<p>Then we know that $h$ is totally determined by points(examples). </p>
+<blockquote>
+<p><strong>Sub-conclusion:</strong>
+Making degree of strip is T, the event:</p>
+<p>$T \geq \epsilon/4$ == no point(example) is in the region of $\epsilon/4$ == all points fallen in the region out of $\epsilon/4$</p>
+<p><strong>Prove:</strong>
+Assuming that degree of strip $T \geq \epsilon/4$ and there is a point fallen into this region, the tightest hypothessis will contain this point. Then T should smaller than $\epsilon/4$. It conflict with our assume. Approved</p>
+</blockquote>
+<p>Then we can get 
+$$
+    N \geq \frac{4}{\epsilon}ln{\frac{4}{\delta}}
+$$</p>
+<h3>Problems:</h3>
+<p><strong>Q:</strong> On page $P69$ of Chapter 2, the author gives an example about how to calculate the number of samples needed to satisfy the miss value $\delta$. The author uses upper bound $\epsilon / 4$ to measure the error, note in here $\epsilon / 4$ is the upper bound for one strip. Then the actually error, noted as $\alpha$, then $\alpha \le \epsilon$. Why not calculated by $(1 - \alpha)^N$ instead of $(1 - \epsilon / 4)^N$?</p>
+<p><strong>A:</strong> I think they could be fine. But method is this book are more strict. Because if $\alpha &gt; 0, x &gt; 0 $, $\alpha(1 - \frac{x}{\alpha})^n &gt; (1-x)^n$</p>
+<p>So if $4(1-\epsilon/4)^n \leq \delta$ then $(1-\epsilon)^n \leq \delta$</p>
+<h3>Conclusion:</h3>
+<blockquote>
+<p>I think the pac gives a us way to quantify the value of proximity between the underlying distribution and our hypothesis under a number of samples.</p>
+</blockquote>
+<p>I don't think so. PAC tell us if we want to adopt tightest hypothesiss with confidence probability at least $1 − \delta$, a given point will be misclassified with error probability at most $\epsilon$ </p>
+<h2>2.7 Model selection and Generalization</h2>
+<p>Why there are $2^2^d possible Boolean functions of d inputs?$</p>
+	<div style="font-size:0.85em">
+	Published In <a href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/category/chapter1-2.html">chapter1-2</a><br>
+	</div>
+        </div><!-- /.entry-content -->
+
+</article>
+</section>
+        <section id="extras" class="body">
+        </section><!-- /#extras -->
+
+</body>
+</html>
