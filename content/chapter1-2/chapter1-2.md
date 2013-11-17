@@ -116,4 +116,7 @@ So if $4(1-\epsilon/4)^n \leq \delta$ then $(1-\epsilon)^n \leq \delta$
 
 I don't think so. PAC tell us if we want to adopt tightest hypothesiss with confidence probability at least $1 − \delta$, a given point will be misclassified with error probability at most $\epsilon$ 
 
+## 2.7 Model selection and Generalization
+
+Why there are $2^2^d possible Boolean functions of d inputs?$
 
