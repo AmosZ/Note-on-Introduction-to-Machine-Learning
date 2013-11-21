@@ -118,5 +118,5 @@ I don't think so. PAC tell us if we want to adopt tightest hypothesiss with conf
 
 ## 2.7 Model selection and Generalization
 
-Why there are $2^2^d possible Boolean functions of d inputs?$
+Why there are $2^2^d$ possible Boolean functions of d inputs?
 
