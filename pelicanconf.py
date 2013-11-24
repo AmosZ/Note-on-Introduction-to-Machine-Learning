@@ -21,7 +21,7 @@ TRANSLATION_FEED_ATOM = None
 PLUGIN_PATH = '/home/zq/Project/pelican/pelican-plugins-master'
 PLUGINS = ['latex']
 
-DISQUS_SITENAME = 'Amos Zhu Blog'
+DISQUS_SITENAME = 'amoszhublog'
 # Blogroll
 #LINKS =  (('Pelican', 'http://getpelican.com/'),
  #         ('Python.org', 'http://python.org/'),
