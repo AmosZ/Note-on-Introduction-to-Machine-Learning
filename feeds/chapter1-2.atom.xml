@@ -52,7 +52,7 @@ $$&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/VC_dimension"&gt;http://en.wikipedia.org/wiki/VC_dimension&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;2.3 Probably Approximately Correct (PAC) Learning&lt;/h2&gt;
-&lt;h3&gt;Definition&lt;/h3&gt;
+&lt;h3&gt;2.3.1 Definition&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Probably Approximately Correct (PAC) Learning&lt;/strong&gt; provide us a method to caculate how many examples(training data) do we need if we use &lt;strong&gt;tightest hypothesis&lt;/strong&gt;. &lt;/p&gt;
 &lt;p&gt;The confidence probability $1-\delta$ is the factor of our certainty on the conculsion : error probability at most $\epsilon$&lt;/p&gt;
 &lt;blockquote&gt;
@@ -60,7 +60,7 @@ $$&lt;/li&gt;
 &lt;p&gt;$$P\{\mathcal{C} \Delta h \le \epsilon \} \ge 1 - \delta$$&lt;/p&gt;
 &lt;p&gt;where $\mathcal{C} \Delta h$ is the region of difference between $\mathcal{C}$ and hypothesis $h$.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3&gt;Explanation:&lt;/h3&gt;
+&lt;h3&gt;2.3.2 Explanation:&lt;/h3&gt;
 &lt;p&gt;We know that $h$ is the tightest hypothsis which is just a boundary around the known(or selected) positive points. 
 And all points(examples) are drawn from an unknown but fixed probability distribution. 
 We can't make sure that $\mathcal{C} \Delta h$ is less that $\epsilon$.Instead, we give it a lower limit probability : $1 - \delta$. 
@@ -69,7 +69,7 @@ This is why the name of this learning is :Probably Approximately Correct&lt;/p&g
 &lt;li&gt;Approximately means : we use a (tightest) hypothesis to approximate the absolutely correct class: C&lt;/li&gt;
 &lt;li&gt;Probably means : we can't make sure of that. We can only give a lower limit probability : $1 - \delta$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Derivation:&lt;/h3&gt;
+&lt;h3&gt;2.3.3 Derivation:&lt;/h3&gt;
 &lt;p&gt;$\mathcal{C} \Delta h &amp;lt; \epsilon$ can be derived from each strip is $ &amp;lt; \epsilon/4$. &lt;/p&gt;
 &lt;p&gt;Then we know that $h$ is totally determined by points(examples). &lt;/p&gt;
 &lt;blockquote&gt;
@@ -83,14 +83,131 @@ Assuming that degree of strip $T \geq \epsilon/4$ and there is a point fallen in
 $$
     N \geq \frac{4}{\epsilon}ln{\frac{4}{\delta}}
 $$&lt;/p&gt;
-&lt;h3&gt;Problems:&lt;/h3&gt;
+&lt;h3&gt;2.3.4 Problems:&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Q:&lt;/strong&gt; On page $P69$ of Chapter 2, the author gives an example about how to calculate the number of samples needed to satisfy the miss value $\delta$. The author uses upper bound $\epsilon / 4$ to measure the error, note in here $\epsilon / 4$ is the upper bound for one strip. Then the actually error, noted as $\alpha$, then $\alpha \le \epsilon$. Why not calculated by $(1 - \alpha)^N$ instead of $(1 - \epsilon / 4)^N$?&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;A:&lt;/strong&gt; I think they could be fine. But method is this book are more strict. Because if $\alpha &amp;gt; 0, x &amp;gt; 0 $, $\alpha(1 - \frac{x}{\alpha})^n &amp;gt; (1-x)^n$&lt;/p&gt;
 &lt;p&gt;So if $4(1-\epsilon/4)^n \leq \delta$ then $(1-\epsilon)^n \leq \delta$&lt;/p&gt;
-&lt;h3&gt;Conclusion:&lt;/h3&gt;
+&lt;h3&gt;2.3.5 Conclusion:&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I think the pac gives a us way to quantify the value of proximity between the underlying distribution and our hypothesis under a number of samples.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;I don't think so. PAC tell us if we want to adopt tightest hypothesiss with confidence probability at least $1 − \delta$, a given point will be misclassified with error probability at most $\epsilon$ &lt;/p&gt;
+&lt;h2&gt;2.4 Noise&lt;/h2&gt;
+&lt;p&gt;There are several interpretations of noise:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Imprecision in recording the input attributes&lt;/li&gt;
+&lt;li&gt;Errors in labeling the data point&lt;/li&gt;
+&lt;li&gt;Additional attributes which we have not taken into account&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;2.5 Learning Multiple Classes&lt;/h2&gt;
+&lt;p&gt;In general, we have K classes denoted as $C_i, i = 1,...K$ and input instance belongs to one and exactly one of them. 
+The training set is now of the form:
+$$
+\mathcal{X} = (x^t,r^t) _{t=1}^{N}
+$$
+where $r$ has $K$ dimensions and :
+&lt;p align="center"&gt;
+&lt;img alt="Alt text" src="images/result_of_classification.png" /&gt;
+&lt;/p&gt;&lt;/p&gt;
+&lt;p&gt;In a K-class problem, we have K hypotheses to learn such that:
+&lt;p align="center"&gt;
+&lt;img alt="Alt text" src="images/K_class_to_learn.png" /&gt;
+&lt;/p&gt;
+The total empirical error takes a sum over the predictions for all classes over all instance
+&lt;p align="center"&gt;
+&lt;img alt="" src="images/total_empirical_error_of_K_classification.png" /&gt;
+&lt;/p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;REJECT&lt;/strong&gt; instance which belong to &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;no class &lt;/li&gt;
+&lt;li&gt;more than one class
+For example , ? is reject region
+&lt;p align="center"&gt;
+&lt;img alt="" src="images/Reject_region.png" /&gt;
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;2.6 Regression&lt;/h2&gt;
+&lt;p&gt;$$
+\mathcal{X} = (x^t,r^t) _{t=1}^{N}
+$$
+where $r^t \in R$&lt;/p&gt;
+&lt;p&gt;We use our model $g(x)$ to approximate the output.&lt;/p&gt;
 &lt;h2&gt;2.7 Model selection and Generalization&lt;/h2&gt;
-&lt;p&gt;Why there are $2^2^d$ possible Boolean functions of d inputs?&lt;/p&gt;</summary></entry></feed>
+&lt;p&gt;Learning is &lt;strong&gt;ill-posed&lt;/strong&gt; -- the data by itself is not sufficient to find a unique solution&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For example, in classfication:&lt;/p&gt;
+&lt;p&gt;If data are pulled from a k-dimension dataset and each value of dimension is 0 or 1, there are at most $2^k$ different data points.
+And if each data point can belong to any class 0 or 1, there would be at most $2^{2^k}$ possible classfication result.
+We should to make some assumptions to have learning possible. The set of assuptions we make to have learning possible is called the &lt;em&gt;inductive bias&lt;/em&gt; of the learning algorithm. The hypothesis class $\mathcal{H}$ is inductive bias.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Then we have one more question: &lt;strong&gt;How to choose the right bias&lt;/strong&gt;? This is called model selection.&lt;/p&gt;
+&lt;h3&gt;How to measure the rightness of a bias?In other words, how do we determine whether a Hypothesis class is good?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;cross-validation: divide training set into two parts. One part is for trainning and the remaining is for validation.
+Given a set of possible hypothesis class $\mathcal{H}_i$, for each we fit the best $h_i \in \mathcal{H}_i$ on training set and the most accurate on the validation set is the best one.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;test set : the error in test set is reported as the error of this hypothesis.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The model(inductive bias),or $\mathcal{H}$ is fixed by the machine learning system designer based on this knowledge of the application.&lt;/p&gt;
+&lt;h2&gt;2.8 Conclusion&lt;/h2&gt;
+&lt;h3&gt;2.8.1 Training Set:&lt;/h3&gt;
+&lt;p&gt;We have 
+$$
+\mathcal{X} = (x^t,r^t) _{t=1}^{N}
+$$
+where if $r^t$ is :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;0/1 for two-class learning&lt;/li&gt;
+&lt;li&gt;K-dimensional binary vector for K&gt;2 class classification&lt;/li&gt;
+&lt;li&gt;a real value in regression&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;2.8.2 Model&lt;/h3&gt;
+&lt;p&gt;Model we use in learning,denoted as
+$$
+g(x|\theta)
+$$
+where g() is the model, $x$ is the input, $\theta$ are the parameters.&lt;/p&gt;
+&lt;p&gt;g() define the hypothesis class $\mathcal{H}$,and a particular value of $\theta$ instantiates one hypothesis $h \in \mathcal{H}$&lt;/p&gt;
+&lt;p&gt;The model(inductive bias),or $\mathcal{H}$ is fixed by the machine learning system designer based on this knowledge of the application.&lt;/p&gt;
+&lt;p&gt;The hypothesis $h$ is chosen(parameters are tuned) by a learning algorithm using the training set, sampled from p(x,r)&lt;/p&gt;
+&lt;h3&gt;2.8.3 Loss function: L():&lt;/h3&gt;
+&lt;p&gt;To compute the difference between :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;desired output $r^t$&lt;/li&gt;
+&lt;li&gt;our approximation $g(x^t|\theta)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Approximation error or loss:
+$$
+    E(\theta|\mathcal{X}) = \sum_{t}L(r^t,g(x^t|\theta))
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In class learning : L() check for equality or not&lt;/li&gt;
+&lt;li&gt;In regression : distance.(For example, square of the difference)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;2.8.4 Optimization procedure&lt;/h3&gt;
+&lt;p&gt;To find $\theta^*$ that &lt;em&gt;minimizes&lt;/em&gt; the total error
+$$
+\theta^* = arg Min_{\theta}E(\theta|\mathcal{X})
+$$&lt;/p&gt;
+&lt;h3&gt;2.8.5 Conclusion&lt;/h3&gt;
+&lt;p&gt;To be able to learn, the following conditions should be satisfied:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;the hypothesis class of g() should be large enough(but not too large) -- have enough capacity to include the unknown function.&lt;/li&gt;
+&lt;li&gt;Enough training data to allow us to pinpoint the correct hypothesis from hypothesis class.In other word, enough trainning data to get the proper hypothesis parameters&lt;/li&gt;
+&lt;li&gt;A good optimization method that finds the correct hypothesis given the training data.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Different machine learning algorithm differ either in :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the models they assume&lt;/li&gt;
+&lt;li&gt;the loss measures they employ&lt;/li&gt;
+&lt;li&gt;the optimization procedure they use&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; : Here is our 3 possible direction to write paper!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;What is our model to determine reputation? &lt;/li&gt;
+&lt;li&gt;What is our loss function? &lt;/li&gt;
+&lt;li&gt;How to optimize our parameters??&lt;/li&gt;
+&lt;/ul&gt;</summary></entry></feed>
