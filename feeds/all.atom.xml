@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Note on IML</title><link href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/" rel="alternate"></link><link href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/feeds/all.atom.xml" rel="self"></link><id>http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/</id><updated>2013-11-11T00:00:00Z</updated><entry><title>Chapter1-2</title><link href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/chapter1-2.html" rel="alternate"></link><updated>2013-11-11T00:00:00Z</updated><author><name>Amos Zhu and Enoche Zhou</name></author><id>tag:amosz.github.io/Note-on-Introduction-to-Machine-Learning,2013-11-11:chapter1-2.html</id><summary type="html">&lt;hr /&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Note on IML</title><link href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/" rel="alternate"></link><link href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/feeds/all.atom.xml" rel="self"></link><id>http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/</id><updated>2013-11-24T00:00:00Z</updated><entry><title>Chapter3:Bayesian Decision Theory</title><link href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/chapter3bayesian-decision-theory.html" rel="alternate"></link><updated>2013-11-24T00:00:00Z</updated><author><name>Amos Zhu and Enoche Zhou</name></author><id>tag:amosz.github.io/Note-on-Introduction-to-Machine-Learning,2013-11-24:chapter3bayesian-decision-theory.html</id><summary type="html">&lt;hr /&gt;
+&lt;h1&gt;General&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Probability theory&lt;/strong&gt; is the framework for making decision under uncertainty&lt;/p&gt;
+&lt;h1&gt;Bayes in Classification&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;p&gt;In 3.2. This book give us an credibility example. It abserve customer's yearly income and saving,which it believe these attributes give us an idea about credibility. I think this is unreliable. &lt;strong&gt;How to represent or choose the inappropriate variable to describe observe?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Bayes's rule:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;prior probability&lt;/em&gt;: $P(C = 1)$It is the knowledge we have as to the value of C &lt;em&gt;before&lt;/em&gt; looking at the observables $\mathcal{x}$&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;class likelihood&lt;/em&gt;: $p(\mathcal{x}|C)$ is the conditional probalility that an event belonging to C has the associated observation value $\mathcal{x}$. &lt;strong&gt;It is what the data tells us regarding the class&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;evidence&lt;/em&gt;: $p(\mathcal{x})$ is the &lt;strong&gt;marginal probability&lt;/strong&gt; that an abservation x is seen
+$$
+    p(x) = \sum_{C}p(x,C) = p(x|C = 1)P(C = 1) + p(x|C = 0)P(C = 0)
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;poster probability:&lt;/em&gt;
+$$
+    posterior = \frac{prior*likelihood}{evidence}
+$$&lt;/p&gt;</summary></entry><entry><title>Chapter1-2</title><link href="http://amosz.github.io/Note-on-Introduction-to-Machine-Learning/chapter1-2.html" rel="alternate"></link><updated>2013-11-11T00:00:00Z</updated><author><name>Amos Zhu and Enoche Zhou</name></author><id>tag:amosz.github.io/Note-on-Introduction-to-Machine-Learning,2013-11-11:chapter1-2.html</id><summary type="html">&lt;hr /&gt;
 &lt;h1&gt;Chapter1 : Introduction&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;Machine learning&lt;/strong&gt; consist of two parts:&lt;/p&gt;
 &lt;ul&gt;
